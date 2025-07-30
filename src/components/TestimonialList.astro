@@ -1,0 +1,15 @@
+
+---
+import { getCollection } from "astro:content";
+const testimonials = await getCollection("testimonials");
+---
+<div class="container" style="display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:1rem;">
+  {testimonials.map(({ data }) => (
+    <blockquote class="card" style="font-style:italic;">
+      <p>“{data.quote}”</p>
+      <footer style="margin-top:.75rem; font-style:normal; color:#475569;">
+        — <strong>{data.author}</strong>{data.role ? `, ${data.role}` : ""}{data.org ? `, ${data.org}` : ""}
+      </footer>
+    </blockquote>
+  ))}
+</div>

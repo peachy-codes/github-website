@@ -1,0 +1,26 @@
+
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={`${frontmatter.title} • Georgia von Minden`}>
+  <section class="container" style="padding-top:2rem; padding-bottom:3rem;">
+    <h1 class="gradient-accent" style="margin-bottom:.5rem;">{frontmatter.title}</h1>
+    {frontmatter.overview && <p style="color:#475569">{frontmatter.overview}</p>}
+    <div style="margin:.75rem 0 1rem 0; display:flex; flex-wrap:wrap; gap:.5rem;">
+      {frontmatter.stack?.map((s) => <span class="pill">{s}</span>)}
+      {frontmatter.kpis?.map((k) => <span class="kpi">{k}</span>)}
+    </div>
+    <article class="card">
+      <slot />
+    </article>
+    {frontmatter.links?.length > 0 && (
+      <div style="margin-top:1rem;">
+        <strong>Links:</strong>
+        <ul>
+          {frontmatter.links.map(l => <li><a href={l.href} target="_blank" rel="noreferrer">{l.label}</a></li>)}
+        </ul>
+      </div>
+    )}
+  </section>
+</BaseLayout>

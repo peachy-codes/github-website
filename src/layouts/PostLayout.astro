@@ -1,0 +1,14 @@
+
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+<BaseLayout title={`${frontmatter.title} • Georgia von Minden`}>
+  <section class="container" style="padding-top:2rem; padding-bottom:3rem;">
+    <h1 style="margin-bottom:.25rem;">{frontmatter.title}</h1>
+    <p style="color:#64748b; margin-top:0;">{frontmatter.date} • {frontmatter.reading_time}</p>
+    <article class="card" style="margin-top:1rem;">
+      <slot />
+    </article>
+  </section>
+</BaseLayout>

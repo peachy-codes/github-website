@@ -1,0 +1,20 @@
+
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts", ({ data }) => !data.draft && data.tags?.includes("research"));
+---
+<BaseLayout title="Research • Georgia von Minden">
+  <section class="container" style="padding:2rem 0 3rem 0;">
+    <h1>Research</h1>
+    <ul style="list-style:none; padding:0; margin:0; display:grid; gap:1rem;">
+      {posts.map(({ slug, data }) => (
+        <li class="card">
+          <a href={`${import.meta.env.BASE_URL}writing/${slug}/`} style="font-weight:600;">{data.title}</a>
+          <div style="color:#64748b; font-size:.9rem;">{data.date}</div>
+          {data.summary && <p style="margin:.5rem 0 0 0;">{data.summary}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

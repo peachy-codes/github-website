@@ -1,0 +1,14 @@
+
+---
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+---
+<ul style="list-style:none; padding:0; margin:0; display:grid; gap:1rem;">
+  {posts.slice(0,3).map(({ slug, data }) => (
+    <li class="card">
+      <a href={`${import.meta.env.BASE_URL}writing/${slug}/`} style="font-weight:600;">{data.title}</a>
+      <div style="color:#64748b; font-size:.9rem;">{data.date}</div>
+      {data.summary && <p style="margin:.5rem 0 0 0;">{data.summary}</p>}
+    </li>
+  ))}
+</ul>
