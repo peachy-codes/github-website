@@ -168,13 +168,6 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "projects": {
-"aclu-legal-doc-pipeline.md": {
-	id: "aclu-legal-doc-pipeline.md";
-  slug: "aclu-legal-doc-pipeline";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".md"] };
 "card-research.md": {
 	id: "card-research.md";
   slug: "card-research";
