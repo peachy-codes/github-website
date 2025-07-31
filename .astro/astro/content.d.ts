@@ -175,6 +175,13 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
+"card-research.md": {
+	id: "card-research.md";
+  slug: "card-research";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
 "communications-graph-analytics.md": {
 	id: "communications-graph-analytics.md";
   slug: "communications-graph-analytics";

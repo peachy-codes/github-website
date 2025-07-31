@@ -1,5 +1,5 @@
 ---
-author: Faculty Member
+author: C. C.
 role: Professor
 org: University of San Francisco
 date: 2025-05-01
