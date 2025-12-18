@@ -1,8 +1,45 @@
-
 ---
 import { getCollection } from "astro:content";
-const projects = await getCollection("projects");
+
+type Props = {
+  /** Max number of projects to render (e.g., homepage featured) */
+  limit?: number;
+  /** Curated set of slugs to render (filename without .md) */
+  slugs?: string[];
+  /** Whether to include archived projects */
+  includeArchived?: boolean;
+};
+
+const { limit, slugs, includeArchived = false } = Astro.props as Props;
+
+let projects = await getCollection("projects");
+
+// Filter archived unless explicitly included
+if (!includeArchived) {
+  projects = projects.filter((p) => p.data.status !== "archived");
+}
+
+// Curate by slug list (and preserve the provided order)
+if (Array.isArray(slugs) && slugs.length > 0) {
+  const set = new Set(slugs);
+  projects = projects.filter((p) => set.has(p.slug));
+  projects.sort((a, b) => slugs.indexOf(a.slug) - slugs.indexOf(b.slug));
+} else {
+  // Default sort: timeline desc, then title asc
+  projects.sort((a, b) => {
+    const ta = String(a.data.timeline ?? "");
+    const tb = String(b.data.timeline ?? "");
+    if (ta !== tb) return tb.localeCompare(ta);
+    return String(a.data.title).localeCompare(String(b.data.title));
+  });
+}
+
+// Optional limit
+if (typeof limit === "number" && Number.isFinite(limit) && limit > 0) {
+  projects = projects.slice(0, limit);
+}
 ---
+
 <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:1rem;">
   {projects.map(({ slug, data }) => (
     <a href={`${import.meta.env.BASE_URL}work/${slug}/`} class="card" style="display:block;">
