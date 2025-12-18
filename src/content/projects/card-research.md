@@ -3,7 +3,7 @@ title: Exploring Disparate Impact with Geospatial Analysis and Communication Gra
 role: Data Scientist, Machine Learning Engineer
 timeline: 2025
 overview: This research explores whether law enforcement disproportionately patrols certain communities, combining geospatial analysis and communication graphing to uncover patterns. The work supports investigations into potential violations of the Fourth Amendment (Search and Seizure) and the Fourteenth Amendment (Equal Protection Clause).
-status: archived
+status: presented
 stack: [NetworkX, Graph tooling, Python, Visualization, ArcGIS, YOLOv5]
 kpis: ["Open-ended", "Reduced time-to-action"]
 links:
