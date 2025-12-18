@@ -53,4 +53,16 @@ const testimonials = defineCollection({
   }),
 });
 
-export const collections = { posts, projects, testimonials };
+const research = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    date: toDateString,
+    summary: z.string().optional(),
+    tags: toStringArray,
+    draft: z.boolean().default(false),
+    reading_time: z.union([z.string(), z.number()]).optional(),
+  }),
+});
+
+export const collections = { posts, projects, testimonials, research };
