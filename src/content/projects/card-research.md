@@ -6,7 +6,9 @@ overview: This research explores whether law enforcement disproportionately patr
 status: archived
 stack: [NetworkX, Graph tooling, Python, Visualization, ArcGIS, YOLOv5]
 kpis: ["Open-ended", "Reduced time-to-action"]
-links: []
+links:
+  - label: Creative Activity Research Day
+    href: https://myusf.usfca.edu/card2025
 
 ---
 
