@@ -7,8 +7,8 @@ status: active
 stack: [Python, PyTorch, Transformers, sentence-transformers, TripletLoss, scikit-learn, MongoDB, Airflow, Docker, Kubernetes, GCP, RSS, News APIs, DVC]
 kpis: ["Automated twice-daily ingestion", "Human-in-the-loop labeling workflow", "Staged data buckets to prevent leakage", "Reproducible training and deployment pipelines"]
 links: 
-- label: lgbtq.ai+ repo on Github
-href: https://github.com/peachy-codes/lgbtq.ai
+  - label: lgbtq.ai+ repo on Github
+    href: https://github.com/peachy-codes/lgbtq.ai
 ---
 
 **Problem.** Build a retrieval-and-generation platform that surfaces trustworthy, trans-affirming sources and reduces the impact of biased or hostile content. Classify article stance (pro/neutral vs. anti-trans) and enable transparent retrieval for downstream RAG.
