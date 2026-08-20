@@ -1,12 +1,22 @@
-
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ProjectGrid from "@components/ProjectGrid.astro";
 ---
-<BaseLayout title="Work • Georgia von Minden">
-  <section class="container" style="padding:2rem 0 3rem 0;">
-    <h1>Work</h1>
-    <p style="color:#475569">Selected projects and such.</p>
-    <ProjectGrid />
+
+<BaseLayout title="Work & Research • Georgia von Minden" description="Selected machine learning systems, civil-rights pipelines, and research projects.">
+  <section class="stream-section" style="padding-top: 2.75rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      <div class="section-label">Portfolio & Research</div>
+      <h1 style="margin-bottom: 0.5rem;">Selected Work</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 0; font-size: 0.95rem;">
+        A chronological stream of local-first ML pipelines, empirical legal tech research, and open-source tooling built with an emphasis on data sovereignty, privacy, and public interest impact.
+      </p>
+    </div>
+  </section>
+
+  <section class="stream-section" style="border-bottom: none; padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="container">
+      <ProjectGrid includeArchived={false} />
+    </div>
   </section>
 </BaseLayout>

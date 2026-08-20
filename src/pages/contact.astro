@@ -1,20 +1,72 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
-<BaseLayout title="Contact • Georgia von Minden">
-  <section class="container" style="padding:2rem 0 3rem 0;">
-    <h1>Contact</h1>
-    <p>
-      Email:
-      <a href="mailto:georgia.vonminden@gmail.com" aria-label="Email Georgia">
-        georgia [at] gmail [dot] com
-      </a>
-    </p>
-    <p>
-      LinkedIn:
-      <a href="https://www.linkedin.com/in/von-minden-ga/" target="_blank" rel="noopener noreferrer">
-        linkedin.com/in/von-minden-ga
-      </a>
-    </p>
+
+<BaseLayout title="Contact • Georgia von Minden" description="Get in touch with Georgia von Minden for research, ML engineering, or civil rights tech collaborations.">
+  <section class="stream-section" style="padding-top: 2.75rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      <div class="section-label">Connect</div>
+      <h1 style="margin-bottom: 0.5rem;">Contact</h1>
+      <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0;">
+        I’m always open to discussing new projects, research collaborations, or technical challenges in civil rights, legal tech, and privacy-preserving ML.
+      </p>
+    </div>
+  </section>
+
+  <section class="stream-section" style="border-bottom: none; padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 0.725rem; text-transform: uppercase; color: var(--text-tertiary); letter-spacing: 0.06em; margin-bottom: 0.25rem;">
+            Direct Inquiries
+          </div>
+          <div style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.25rem;">
+            <a href="mailto:georgia.vonminden@gmail.com" style="color: var(--accent);">
+              georgia.vonminden@gmail.com
+            </a>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">
+            Best for project inquiries, technical consulting, and research conversations.
+          </p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 1.25rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.725rem; text-transform: uppercase; color: var(--text-tertiary); letter-spacing: 0.06em; margin-bottom: 0.5rem;">
+            Online Presence
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <div>
+                <strong>GitHub</strong>
+                <span style="color: var(--text-tertiary); font-size: 0.8rem; margin-left: 0.4rem;">peachy-codes</span>
+              </div>
+              <a href="https://github.com/peachy-codes" target="_blank" rel="noopener noreferrer" style="font-size: 0.825rem; font-weight: 500; color: var(--accent);">
+                github.com/peachy-codes ↗
+              </a>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <div>
+                <strong>LinkedIn</strong>
+                <span style="color: var(--text-tertiary); font-size: 0.8rem; margin-left: 0.4rem;">von-minden-ga</span>
+              </div>
+              <a href="https://www.linkedin.com/in/von-minden-ga/" target="_blank" rel="noopener noreferrer" style="font-size: 0.825rem; font-weight: 500; color: var(--accent);">
+                linkedin.com/in/von-minden-ga ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 1.25rem;">
+          <h3 style="margin-bottom: 0.5rem;">Active Collaboration Areas</h3>
+          <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-secondary); display: grid; gap: 0.35rem;">
+            <li>Public interest legal technology and automated discovery triage</li>
+            <li>Local-first, air-gapped machine learning pipelines (Whisper, OCR, LLMs)</li>
+            <li>Empirical analysis of disparity and bias in public records & policing</li>
+            <li>Reproducible MLOps infrastructure for privacy-critical organizations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>

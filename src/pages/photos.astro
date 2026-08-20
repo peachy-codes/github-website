@@ -1,0 +1,91 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const photos = [
+  {
+    src: `${baseUrl}assets/images/sunset-installation.jpg`,
+    title: "Midnight Sunset — Outdoor Fabric Projection Installation",
+    subtitle: "Generative Visual Computing & Environmental Projection • 2025",
+    description: "Physical installation photograph showing procedural sunset gradient fields projected onto suspended translucent fabric in an outdoor setting, refracting generative light patterns through textile folds.",
+    link: `${baseUrl}work/midnight-sunset-art/`,
+    linkText: "Read more & view video →"
+  },
+  {
+    src: `${baseUrl}assets/images/macro-micro-gallery.jpg`,
+    title: "MACRO/micro Gallery Exhibit (2026)",
+    subtitle: "Nature of Code Exhibition • San Francisco, CA",
+    description: "Gallery installation view of 'MACRO/micro', an interpretative art piece exploring the asymmetric exchange between humanity and artificial intelligence through visual representations of consumption, adoption, and assimilation.",
+    link: `${baseUrl}work/macro-micro-art/`,
+    linkText: "Read more →"
+  },
+  {
+    src: `${baseUrl}assets/images/macro-micro-placard.jpg`,
+    title: "MACRO/micro Exhibition Placard",
+    subtitle: "Nature of Code Exhibition • 2026",
+    description: "Placard statement: 'A critique of the asymmetric exchange between humanity and AI via a visual representation of consumption, adoption, and assimilation. Presented in conjunction with our Nature of Code exhibition.'",
+    link: `${baseUrl}work/macro-micro-art/`,
+    linkText: "Read more →"
+  },
+  {
+    src: `${baseUrl}assets/images/card-presentation.jpg`,
+    title: "Creative Activity Research Day (CARD 2025)",
+    subtitle: "University of San Francisco • May 2025",
+    description: "Oral presentation on 'Exploring Disparate Impact with Geospatial Analysis and Communication Graphing', covering empirical ACLU of Northern California research, Random Forest geospatial regression, and LDA communication graph analytics.",
+    link: `${baseUrl}work/card-research/`,
+    linkText: "Read more →"
+  }
+];
+---
+
+<BaseLayout title="Photos & Presentations • Georgia von Minden" description="Photographs and presentation records from academic conferences and research talks.">
+  <section class="stream-section" style="padding-top: 2.75rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      <div class="section-label">Archive / Visuals</div>
+      <h1 style="margin-bottom: 0.5rem;">Photos & Presentations</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 0; font-size: 0.95rem;">
+        Photographic records from research presentations, conference talks, and academic symposiums.
+      </p>
+    </div>
+  </section>
+
+  <section class="stream-section" style="border-bottom: none; padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="container">
+      <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+        {photos.map((p) => (
+          <article style="border: 1px solid var(--border); background-color: var(--surface); padding: 1rem;">
+            <div style="margin-bottom: 1rem; border: 1px solid var(--border-subtle); overflow: hidden; background: #000;">
+              <img 
+                src={p.src} 
+                alt={p.title} 
+                style="width: 100%; height: auto; display: block; filter: contrast(1.02);" 
+                loading="lazy" 
+              />
+            </div>
+            
+            <div style="font-size: 0.8rem; color: var(--text-tertiary); margin-bottom: 0.25rem;">
+              {p.subtitle}
+            </div>
+            
+            <h2 style="font-size: 1.2rem; margin-top: 0; margin-bottom: 0.5rem; border: none; padding: 0;">
+              {p.title}
+            </h2>
+            
+            <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem; color: var(--text-secondary);">
+              {p.description}
+            </p>
+            
+            {p.link && (
+              <div style="padding-top: 0.5rem; border-top: 1px dashed var(--border-subtle);">
+                <a href={p.link} class="project-link-affordance" style="font-size: 0.85rem;">
+                  {p.linkText}
+                </a>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

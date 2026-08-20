@@ -1,21 +1,45 @@
-
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const posts = await getCollection("posts", ({ data }) => !data.draft);
+posts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
-<BaseLayout title="Writing • Georgia von Minden">
-  <section class="container" style="padding:2rem 0 3rem 0;">
-    <h1>Writing</h1>
-    <ul style="list-style:none; padding:0; margin:0; display:grid; gap:1rem;">
-      {posts.map(({ slug, data }) => (
-        <li class="card">
-          <a href={`${import.meta.env.BASE_URL}writing/${slug}/`} style="font-weight:600;">{data.title}</a>
-          <div style="color:#64748b; font-size:.9rem;">{data.date} • {data.reading_time}</div>
-          {data.summary && <p style="margin:.5rem 0 0 0;">{data.summary}</p>}
-          <div style="margin-top:.35rem;">{data.tags?.map(t => <span class="pill">{t}</span>)}</div>
-        </li>
-      ))}
-    </ul>
+
+<BaseLayout title="Writing • Georgia von Minden" description="Essays on litigation data management, machine learning operations, and privacy-first tech.">
+  <section class="stream-section" style="padding-top: 2.75rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      <div class="section-label">Essays & Field Notes</div>
+      <h1 style="margin-bottom: 0.5rem;">Writing</h1>
+      <p style="color: var(--text-secondary); margin-bottom: 0; font-size: 0.95rem;">
+        Reflections on discovery scaling in civil rights litigation, systemic data analysis, local AI infrastructure, and reproducible engineering.
+      </p>
+    </div>
+  </section>
+
+  <section class="stream-section" style="border-bottom: none; padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="container">
+      <div class="writing-stream">
+        {posts.map(({ slug, data }) => (
+          <a href={`${baseUrl}writing/${slug}/`} class="writing-stream-item">
+            <div class="writing-stream-header">
+              <h2 class="writing-stream-title">{data.title}</h2>
+              <div class="writing-stream-meta">
+                <time datetime={data.date}>{data.date}</time>
+                {data.reading_time && <span> • {data.reading_time} read</span>}
+              </div>
+            </div>
+            {data.summary && <p class="writing-stream-summary">{data.summary}</p>}
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.25rem;">
+              <div class="tag-list">
+                {data.tags?.map((t) => <span class="tag">{t}</span>)}
+              </div>
+              <span class="project-link-affordance" style="font-size: 0.775rem;">Read essay →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
 </BaseLayout>

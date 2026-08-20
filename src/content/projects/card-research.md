@@ -9,8 +9,9 @@ kpis: ["Open-ended", "Reduced time-to-action"]
 links:
   - label: Creative Activity Research Day
     href: https://myusf.usfca.edu/card2025
-
 ---
+
+![Georgia von Minden presenting at CARD 2025](/assets/images/card-presentation.jpg)
 
 ## Research Questions
 

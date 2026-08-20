@@ -1,30 +1,98 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+
+type Props = {
+  frontmatter: {
+    title: string;
+    role?: string;
+    timeline?: string;
+    overview?: string;
+    status?: "active" | "archived";
+    stack?: string[];
+    kpis?: string[];
+    links?: { label: string; href: string }[];
+  };
+};
+
 const { frontmatter } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 ---
+
 <BaseLayout title={`${frontmatter.title} • Georgia von Minden`}>
-  <section class="container" style="padding-top:2rem; padding-bottom:3rem;">
-    <h1 class="gradient-accent" style="margin-bottom:.5rem;">{frontmatter.title}</h1>
+  <section class="stream-section" style="padding-top: 2.75rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      <a href={`${baseUrl}work`} style="font-size: 0.8rem; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 0.25rem; margin-bottom: 1rem;">
+        ← Back to all work
+      </a>
 
-    {frontmatter.overview && <p style="color:#475569; margin:0 0 .75rem 0;">{frontmatter.overview}</p>}
-
-    {frontmatter.links?.length > 0 && (
-      <div style="margin:0 0 1rem 0; display:flex; flex-wrap:wrap; gap:.5rem;">
-        {frontmatter.links.map((l) => (
-          <a class="pill" href={l.href} target="_blank" rel="noreferrer">
-            {l.label} ↗
-          </a>
-        ))}
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-tertiary);">
+        {frontmatter.role && <span style="color: var(--text-secondary); font-weight: 500;">{frontmatter.role}</span>}
+        {frontmatter.timeline && <span>• {frontmatter.timeline}</span>}
+        {frontmatter.status && (
+          <span class="status-badge" style="padding: 0.1rem 0.4rem; font-size: 0.675rem;">
+            <span class="status-dot"></span>
+            {frontmatter.status.toUpperCase()}
+          </span>
+        )}
       </div>
-    )}
 
-    <div style="margin:.75rem 0 1rem 0; display:flex; flex-wrap:wrap; gap:.5rem;">
-      {frontmatter.stack?.map((s) => <span class="pill">{s}</span>)}
-      {frontmatter.kpis?.map((k) => <span class="kpi">{k}</span>)}
+      <h1 style="margin-bottom: 0.65rem;">{frontmatter.title}</h1>
+
+      {frontmatter.overview && (
+        <p style="font-size: 0.975rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem;">
+          {frontmatter.overview}
+        </p>
+      )}
+
+      {frontmatter.links && frontmatter.links.length > 0 && (
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+          {frontmatter.links.map((l) => (
+            <a href={l.href} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.775rem; padding: 0.25rem 0.6rem;">
+              <span>{l.label}</span>
+              <span style="font-size: 0.7rem;">↗</span>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {frontmatter.stack && frontmatter.stack.length > 0 && (
+        <div style="margin-top: 0.75rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; font-family: var(--font-mono); color: var(--text-tertiary); letter-spacing: 0.05em; margin-bottom: 0.35rem;">
+            Technologies & Frameworks
+          </div>
+          <div class="tag-list">
+            {frontmatter.stack.map((s) => <span class="tag">{s}</span>)}
+          </div>
+        </div>
+      )}
+
+      {frontmatter.kpis && frontmatter.kpis.length > 0 && (
+        <div style="margin-top: 0.75rem;">
+          <div style="font-size: 0.7rem; text-transform: uppercase; font-family: var(--font-mono); color: var(--text-tertiary); letter-spacing: 0.05em; margin-bottom: 0.35rem;">
+            Key System Outcomes
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+            {frontmatter.kpis.map((k) => <span class="kpi-badge">✓ {k}</span>)}
+          </div>
+        </div>
+      )}
     </div>
+  </section>
 
-    <article class="card">
-      <slot />
-    </article>
+  <section class="stream-section" style="border-bottom: none; padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="container">
+      <article class="prose">
+        <slot />
+      </article>
+
+      <div style="margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+        <a href={`${baseUrl}work`} style="font-size: 0.825rem; font-weight: 600; color: var(--accent);">
+          ← Back to all work
+        </a>
+        <a href={`${baseUrl}contact`} class="btn btn-secondary" style="font-size: 0.775rem;">
+          Discuss this project →
+        </a>
+      </div>
+    </div>
   </section>
 </BaseLayout>
