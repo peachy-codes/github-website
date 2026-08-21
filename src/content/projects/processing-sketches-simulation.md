@@ -1,11 +1,11 @@
 ---
 title: "Algorithmic Explorations: Generative Processing Sketches"
 role: Creative Coder & Algorithm Designer
-timeline: 2023 -- 2025
-overview: A suite of custom computational simulations and generative sketches built in Processing (Java), spanning celestial mechanics, genetic cellular automata, relativistic optical warping, botanical morphogenesis, and brutalist control architecture.
+timeline: 2025 -- 2026
+overview: A suite of custom computational simulations and generative sketches built in Processing (Java), spanning celestial mechanics, genetic cellular automata, relativistic optical warping, genetic path-finding boids, and brutalist architecture.
 status: active
 stack: [Processing, Java, Computational Physics, GLSL, Genetic Algorithms, Cellular Automata, Quaternion Math]
-kpis: ["N-body orbital integrator", "Genetic Conway automata", "Poincaré gravitational lensing", "Procedural L-system plant growth", "Brutalist control architecture simulation"]
+kpis: ["N-body orbital integrator", "Genetic Conway automata", "Poincaré gravitational lensing", "Procedural L-system plant growth", "Aesthetic"]
 links:
   - label: Processing Code on GitHub
     href: https://github.com/peachy-codes
@@ -21,26 +21,23 @@ A collection of algorithmic experiments and computational physics simulations de
 
 ### 1. N-Body Orbital Physics Visualizer (`n_body`)
 - Implemented real-time gravitational interaction algorithms for arbitrary multi-body mass systems.
+- Barnes-Hut algorithm for reduced computation load.
 - Integrated symplectic numerical solvers with dynamic trail fading and barycenter tracking.
+- Used as a backdrop for creative fireside chats
 
-### 2. Genetic Conway Automata (`genetic_conway`)
-- Extended classic Conway's Game of Life with evolutionary genetic algorithms and mutation parameters.
-- Modeled cell longevity, reproduction fitness thresholds, and spatial genetic drift over thousands of generations.
-
-### 3. Gravitational Lensing & Relativistic Ray Marching (`grav_lensing` / `line_of_sight_poincare`)
+### 2. Gravitational Lensing & Relativistic Ray Marching (`grav_lensing` / `line_of_sight_poincare`)
 - Simulated light ray curvature around massive gravitational point sources using optical metric tensors.
 - Rendered Einstein rings, Poincare disk conformal projections, and dynamic geodesic warping in real time.
 
-### 4. MACRO/micro (2026 Gallery Exhibit) (`macro_micro`)
+### 3. MACRO/micro (2026 Gallery Exhibit) (`macro_micro`)
 - An interpretative critique of the asymmetric exchange between humanity and artificial intelligence, exploring visual representations of consumption, adoption, and assimilation.
 - Exhibited in the *Nature of Code* gallery show with procedural multi-scale visual textures and real-time canvas rendering.
 
-### 5. Botanical Morphogenesis & Plant Growth (`plant_growth` / `fractal_tree`)
-- Procedural L-system grammars and recursive botanical branch generation with stochastic wind perturbation.
-- Simulated phototropism, nutrient distribution, and dynamic vascular node thickening.
+### 4. Botanical Morphogenesis & Plant Growth (`plant_growth` / `fractal_tree`)
+- Quaternion based rotations and L systems control thousands of boids as they travel to a target pixel to form an image.
 
 ### 6. Cathode Ray Visualizer (`cathode_ray_tranny`)
 - Recreated vintage CRT phosphor decay, raster scanline beam deflection, and analog noise artifacts using quaternion rotation math and custom color matrices.
 
 ### 7. Control Architecture Simulation (`ControlArchitecture`)
-- A modular procedural engine modeling brutalist architectural growth, spatial pillars, and constrained volumetric universe generation (`ConcreteGrowthEngine`, `BrutalistSpawner`).
+- A modular procedural engine modeling brutalist architectural growth. Inspired by the shifting concrete architecture of *The Oldest House* in the video game **Control**.

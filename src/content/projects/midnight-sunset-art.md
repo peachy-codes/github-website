@@ -1,8 +1,8 @@
 ---
 title: "Midnight Sunset & Generative Visual Computing"
 role: Creative Coder & Visual Artist
-timeline: 2024 -- 2025
-overview: Algorithmic digital art pieces and generative shaders exploring color transitions, atmospheric light gradients, and recursive geometry in visual computing.
+timeline: 2026
+overview: An in-situ piece designed for a music festival hosted annually in the summer of Mendocino. This year's theme was 'Luxury Resort' and the sunset art piece was ran from approximately 9PM to 4AM.
 status: active
 stack: [Processing, Java, GLSL Shaders, Creative Coding, Computational Art]
 kpis: ["Dynamic atmospheric light modeling", "Real-time shader color blending", "Generative raster & vector geometry"]
@@ -32,7 +32,7 @@ links:
 
 ## Artistic & Technical Themes
 
-- **Procedural Sky & Horizon Rendering:** Formulated non-linear trigonometric color blending and particle field scattering to simulate dusk-to-midnight chromatic transitions.
-- **Physical Fabric Projection:** Projected generative computational animations onto layered, translucent fabric suspended in natural outdoor environments, allowing wind motion and textile folds to refract the procedural light.
-- **Custom Shaders & Real-Time Performance:** Implemented lightweight render loops in Processing and GLSL shaders to render smooth chromatic wave dynamics at interactive frame rates.
-- **Generative Textures:** Combined Perlin noise fields with sinusoidal phase modulation to generate organic, painterly textures across the canvas.
+- **Procedural Rendering:** Non-linear trig and other methods used to create chromatic aberration and other sunlight effects.
+- **Projection Medium:** Multi-layered tulle draped over paracord fastened to neighboring trees in a non-destructive manner.
+- **Custom Shaders & Real-Time Performance:** GLSL was utilized to keep power draw low since this was for an outdoor event where battery power was limited. 
+- **Generative Textures:** Perlin noise was used to create the whitecaps of the waves as well as the clouds.

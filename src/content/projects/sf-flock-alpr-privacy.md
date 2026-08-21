@@ -1,11 +1,11 @@
 ---
 title: "SF-Flock: ALPR Surveillance Privacy Analysis System"
 role: Systems Researcher & Lead Developer
-timeline: 2025
+timeline: 2025 -- 2026
 overview: Interactive simulation framework and graph engine to quantify vehicle anonymity loss across San Francisco's ALPR camera network using time-geographic space-time prisms and negative observation constraints.
 status: active
 stack: [Python, FastAPI, NetworkX, OSMnx, SciPy, Shapely, React, MapLibre GL, TailwindCSS]
-kpis: ["Dynamic road network graph pruning", "Negative camera constraint modeling", "Real-time space-time prism rendering", "31 precomputed test routes"]
+kpis: ["Custom Dijkstra for prism calculations.", "Negative information modeling", "Real-time space-time prism rendering", "Precomputed test routes"]
 links:
   - label: SF-Flock Repository
     href: https://github.com/peachy-codes/sf-flock

@@ -1,7 +1,7 @@
 ---
 title: "Street Spirit: Community Data Mentoring & Advocacy"
 role: Volunteer Mentor & Data Analyst
-timeline: 2024 -- Present
+timeline: 2025 -- 2026
 overview: Data mentorship and quantitative analysis supporting Street Spirit, an independent street newspaper reporting on homelessness, housing justice, and civil rights in the East Bay.
 status: active
 stack: [Python, pandas, Data Analysis, Mentorship, Civic Tech, Community Advocacy]
