@@ -30,3 +30,7 @@ The system trains a bidirectional **Transformer Denoiser** to iteratively refine
 - Implemented conditional inference algorithms allowing users to pin tokens at arbitrary sequence indices (prefix, suffix, or infill).
 - The diffusion sampling loop preserves fixed positions during reverse denoising steps, generating syntactically and semantically coherent text connecting boundary constraints.
 - Benchmarked offline inference performance and perplexity metrics across Apple Silicon (MPS) and CUDA environments.
+
+### 3. Findings
+- Token infill diffusers are still a challenge on small token count and limited hardware.
+- This will be revisited in the the future at some point.

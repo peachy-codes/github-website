@@ -1,0 +1,53 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const { frontmatter } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const items = await getCollection("research", ({ data }) => !data.draft);
+---
+
+<BaseLayout 
+  title={frontmatter?.title ?? "Research • Georgia von Minden"} 
+  description={frontmatter?.description}
+>
+  <section class="stream-section" style="padding-top: 2.75rem; padding-bottom: 1.5rem;">
+    <div class="container">
+      {frontmatter?.label && <div class="section-label">{frontmatter.label}</div>}
+      <h1 style="margin-bottom: 0.5rem;">{frontmatter?.heading || frontmatter?.title || "Research"}</h1>
+      {frontmatter?.description && (
+        <p style="color: var(--text-secondary); margin-bottom: 0; font-size: 0.95rem;">
+          {frontmatter.description}
+        </p>
+      )}
+    </div>
+  </section>
+
+  <section class="stream-section" style="border-bottom: none; padding-top: 1.5rem; padding-bottom: 3.5rem;">
+    <div class="container">
+      <article class="prose" style="margin-bottom: 1.5rem;">
+        <slot />
+      </article>
+
+      <div class="writing-stream">
+        {items.map(({ slug, data }) => (
+          <a href={`${baseUrl}research/${slug}/`} class="writing-stream-item">
+            <div class="writing-stream-header">
+              <h2 class="writing-stream-title">{data.title}</h2>
+              <div class="writing-stream-meta">
+                <time datetime={data.date}>{data.date}</time>
+              </div>
+            </div>
+            {data.summary && <p class="writing-stream-summary">{data.summary}</p>}
+            {data.tags && data.tags.length > 0 && (
+              <div class="tag-list" style="margin-top: 0.5rem;">
+                {data.tags.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

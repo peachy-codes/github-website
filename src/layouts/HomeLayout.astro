@@ -1,0 +1,108 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import LatestPosts from "@components/LatestPosts.astro";
+import ProjectGrid from "@components/ProjectGrid.astro";
+import TestimonialList from "@components/TestimonialList.astro";
+
+const { frontmatter } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout 
+  title={frontmatter?.title ?? "Georgia von Minden • ML Engineer & Systems Researcher"} 
+  description={frontmatter?.description}
+>
+  <!-- Intro Stream (Rendered directly from index.md) -->
+  <section class="stream-section" style="padding-top: 2.75rem;">
+    <div class="container">
+      {frontmatter?.status && (
+        <div style="margin-bottom: 0.85rem;">
+          <span class="status-badge">
+            <span class="status-dot"></span>
+            <span>{frontmatter.status}</span>
+          </span>
+        </div>
+      )}
+
+      <article class="prose">
+        <slot />
+      </article>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem;">
+        <a href="#work" class="btn btn-primary">Selected Work ↓</a>
+        <a href={`${baseUrl}photos`} class="btn btn-secondary">Photos</a>
+        <a href={`${baseUrl}writing`} class="btn btn-secondary">Writing</a>
+        <a href={`${baseUrl}about`} class="btn btn-secondary">About</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Work Stream -->
+  <section id="work" class="stream-section">
+    <div class="container">
+      <div class="stream-header">
+        <div class="section-label">01 / Portfolio</div>
+        <h2>{frontmatter?.workHeading ?? "Selected Work & Research"}</h2>
+        <p>{frontmatter?.workSubtitle ?? "End-to-end ML pipelines, empirical spatial analytics, and legal discovery tooling."}</p>
+      </div>
+
+      <ProjectGrid slugs={frontmatter?.featuredProjects ?? ["sf-flock-alpr-privacy", "aclu-legal-doc-pipeline", "lgbtqai-platform-rag", "discrete-diffusion-transformer", "umap-hull-exploration", "card-research"]} />
+
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <a href={`${baseUrl}work`} class="btn btn-secondary" style="font-size: 0.8rem;">
+          All projects & research →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing Stream -->
+  <section class="stream-section">
+    <div class="container">
+      <div class="stream-header">
+        <div class="section-label">02 / Writing</div>
+        <h2>{frontmatter?.writingHeading ?? "Essays & Field Notes"}</h2>
+        <p>{frontmatter?.writingSubtitle ?? "Reflections on discovery scaling, local-first ML architectures, and MLOps."}</p>
+      </div>
+
+      <LatestPosts limit={frontmatter?.writingLimit ?? 3} />
+
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <a href={`${baseUrl}writing`} class="btn btn-secondary" style="font-size: 0.8rem;">
+          All essays →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials & Endorsements -->
+  <section class="stream-section">
+    <div class="container">
+      <div class="stream-header">
+        <div class="section-label">03 / Collaborations</div>
+        <h2>{frontmatter?.testimonialsHeading ?? "Investigator & Faculty Notes"}</h2>
+      </div>
+
+      <TestimonialList />
+    </div>
+  </section>
+
+  <!-- Contact CTA Stream Block -->
+  <section class="stream-section" style="border-bottom: none; padding-bottom: 3rem;">
+    <div class="container">
+      <div class="section-label">04 / Connect</div>
+      <h2 style="margin-bottom: 0.4rem;">{frontmatter?.connectHeading ?? "Let’s collaborate."}</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.15rem; font-size: 0.925rem;">
+        {frontmatter?.connectText ?? "Whether you’re dealing with high-volume legal discovery, investigating algorithmic bias, or building on-premise ML workflows, I’d love to connect."}
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+        <a href={`mailto:${frontmatter?.email ?? 'georgia.vonminden@gmail.com'}`} class="btn btn-primary">
+          {frontmatter?.email ?? 'georgia.vonminden@gmail.com'}
+        </a>
+        <a href={`${baseUrl}contact`} class="btn btn-secondary">
+          Contact & Socials →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -152,6 +152,20 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"graphs-and-communications-dynamics.md": {
+	id: "graphs-and-communications-dynamics.md";
+  slug: "graphs-and-communications-dynamics";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
+"principled-mlops-for-human-impact.md": {
+	id: "principled-mlops-for-human-impact.md";
+  slug: "principled-mlops-for-human-impact";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".md"] };
 "the-future-of-activism.md": {
 	id: "the-future-of-activism.md";
   slug: "the-future-of-activism";
@@ -161,6 +175,13 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 "projects": {
+"aclu-legal-doc-pipeline.md": {
+	id: "aclu-legal-doc-pipeline.md";
+  slug: "aclu-legal-doc-pipeline";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
 "card-research.md": {
 	id: "card-research.md";
   slug: "card-research";
@@ -175,12 +196,91 @@ declare module 'astro:content' {
   collection: "projects";
   data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
+"discrete-diffusion-transformer.md": {
+	id: "discrete-diffusion-transformer.md";
+  slug: "discrete-diffusion-transformer";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"housecat.md": {
+	id: "housecat.md";
+  slug: "housecat";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
 "lgbtqai-platform-rag.md": {
 	id: "lgbtqai-platform-rag.md";
   slug: "lgbtqai-platform-rag";
   body: string;
   collection: "projects";
   data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"lie-groups.md": {
+	id: "lie-groups.md";
+  slug: "lie-groups";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"macro-micro-art.md": {
+	id: "macro-micro-art.md";
+  slug: "macro-micro-art";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"midnight-sunset-art.md": {
+	id: "midnight-sunset-art.md";
+  slug: "midnight-sunset-art";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"processing-sketches-simulation.md": {
+	id: "processing-sketches-simulation.md";
+  slug: "processing-sketches-simulation";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"sf-flock-alpr-privacy.md": {
+	id: "sf-flock-alpr-privacy.md";
+  slug: "sf-flock-alpr-privacy";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"street-spirit-mentoring.md": {
+	id: "street-spirit-mentoring.md";
+  slug: "street-spirit-mentoring";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"umap-hull-exploration.md": {
+	id: "umap-hull-exploration.md";
+  slug: "umap-hull-exploration";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+"videoless-essay.md": {
+	id: "videoless-essay.md";
+  slug: "videoless-essay";
+  body: string;
+  collection: "projects";
+  data: InferEntrySchema<"projects">
+} & { render(): Render[".md"] };
+};
+"research": {
+"placeholder.md": {
+	id: "placeholder.md";
+  slug: "placeholder";
+  body: string;
+  collection: "research";
+  data: InferEntrySchema<"research">
 } & { render(): Render[".md"] };
 };
 "testimonials": {
