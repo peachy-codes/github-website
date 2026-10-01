@@ -1,4 +1,3 @@
-
 name: Deploy Astro site to Pages
 
 on:
@@ -29,8 +28,8 @@ jobs:
         run: npm ci
       - name: Build
         env:
-          BASE: "/github-website/"
-          SITE: "https://peachy-codes.github.io/github-website/"
+          BASE: "/"
+          SITE: "https://peachproductions.art"
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
