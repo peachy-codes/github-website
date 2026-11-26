@@ -55,9 +55,11 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background-color: var(--bg);
   background: var(--vignette);
-  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-body);
   padding: 48px 44px 72px;
@@ -66,10 +68,11 @@ body {
 
 .site-inner {
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 120px);
+  flex: 1;
 }
 
 #main-content {
@@ -411,7 +414,7 @@ img, video {
    Site Footer (Whitespace-Driven, No Border Bars)
    ========================================================================== */
 .site-footer {
-  margin-top: 72px;
+  margin-top: 48px;
 }
 
 .footer-content {
@@ -444,7 +447,15 @@ img, video {
    ========================================================================== */
 @media (max-width: 640px) {
   body {
-    padding: 28px 20px 56px;
+    padding: 28px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .site-footer {
+    margin-top: 32px;
+  }
+
+  .footer-content {
+    padding-top: 18px;
   }
 
   .site-header {
