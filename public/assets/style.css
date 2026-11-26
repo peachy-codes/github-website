@@ -409,7 +409,7 @@ img, video {
    Site Footer (Whitespace-Driven, No Border Bars)
    ========================================================================== */
 .site-footer {
-  margin-top: 48px;
+  margin-top: 0px;
 }
 
 .footer-content {
@@ -421,7 +421,7 @@ img, video {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 0px;
 }
 
 .footer-links {
@@ -446,11 +446,11 @@ img, video {
   }
 
   .site-footer {
-    margin-top: 32px;
+    margin-top: 0px;
   }
 
   .footer-content {
-    padding-top: 18px;
+    padding-top: 0px;
   }
 
   .site-header {
