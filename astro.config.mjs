@@ -63,6 +63,11 @@ const config = {
     }),
   ],
   build: { format: "directory" },
+  redirects: {
+    "/about": "/",
+    "/work": "/works",
+    "/portfolio": "/works",
+  },
 };
 
 // Only set in CI; locally leave undefined for localhost-friendly paths.

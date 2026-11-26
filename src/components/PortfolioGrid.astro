@@ -1,0 +1,94 @@
+---
+import { frontmatter as site } from "../pages/_site.md";
+
+type WorkItem = {
+  slug: string;
+  title: string;
+  role?: string;
+  timeline?: string;
+  location?: string;
+  materials?: string;
+  dimensions?: string;
+  context?: string;
+  image?: string;
+  overview?: string;
+  status?: string;
+  links?: { label: string; href: string }[];
+};
+
+type Props = {
+  works?: WorkItem[];
+  limit?: number;
+  slugs?: string[];
+  includeArchived?: boolean;
+};
+
+const { works: rawWorks = [], limit, slugs, includeArchived = false } = Astro.props as Props;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const viewWorkLabel = site.viewWorkLabel ?? "view work";
+
+let works: WorkItem[] = Array.isArray(rawWorks) ? [...rawWorks] : [];
+
+if (!includeArchived) {
+  works = works.filter((w) => w.status !== "archived");
+}
+
+if (Array.isArray(slugs) && slugs.length > 0) {
+  const set = new Set(slugs);
+  works = works.filter((w) => set.has(w.slug));
+  works.sort((a, b) => slugs.indexOf(a.slug) - slugs.indexOf(b.slug));
+}
+
+if (typeof limit === "number" && Number.isFinite(limit) && limit > 0) {
+  works = works.slice(0, limit);
+}
+---
+
+<div class="l1-list">
+  {works.map((data) => {
+    const metaParts = [data.location, data.timeline].filter(Boolean);
+    const specParts = [data.materials, data.dimensions].filter(Boolean);
+    return (
+      <article class="l1-item">
+        {data.image && (
+          <a href={`${baseUrl}works/${data.slug}/`} class="l1-img-link" aria-label={data.title}>
+            <img 
+              src={data.image} 
+              alt={data.title} 
+              class="l1-img"
+              loading="lazy" 
+            />
+          </a>
+        )}
+
+        <div class="l1-bar">
+          <div>
+            <h2 class="l1-title">
+              <a href={`${baseUrl}works/${data.slug}/`} class="l1-title-link">{data.title}</a>
+            </h2>
+            {metaParts.length > 0 && (
+              <div class="l1-meta">{metaParts.join(" ")}</div>
+            )}
+            {specParts.length > 0 && (
+              <div style="font-size: 14px; font-style: italic; color: var(--muted); margin-top: 4px;">
+                {specParts.join(" ")}
+              </div>
+            )}
+            {data.overview && (
+              <p class="l1-desc">{data.overview}</p>
+            )}
+          </div>
+
+          <div class="l1-links">
+            <a href={`${baseUrl}works/${data.slug}/`}>{viewWorkLabel}</a>
+            {data.links && data.links.map((link) => (
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </article>
+    );
+  })}
+</div>

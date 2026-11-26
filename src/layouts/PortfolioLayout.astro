@@ -1,0 +1,32 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import PortfolioGrid from "@components/PortfolioGrid.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout 
+  title={frontmatter?.title} 
+  description={frontmatter?.description}
+  brandTitle={frontmatter?.brandTitle}
+  brandSubtitle={frontmatter?.brandSubtitle}
+  footerText={frontmatter?.footerText}
+>
+  <section class="page-section">
+    {frontmatter?.label && (
+      <div style="font-style: italic; color: var(--muted); font-size: 14px; margin-bottom: 4px;">
+        {frontmatter.label}
+      </div>
+    )}
+    {frontmatter?.heading && <h1 style="font-size: 34px; margin-bottom: 16px;">{frontmatter.heading}</h1>}
+    <article class="prose" style="margin-bottom: 32px;">
+      <slot />
+    </article>
+    <PortfolioGrid 
+      works={frontmatter?.works}
+      limit={frontmatter?.limit}
+      slugs={frontmatter?.slugs}
+      includeArchived={frontmatter?.includeArchived ?? false} 
+    />
+  </section>
+</BaseLayout>

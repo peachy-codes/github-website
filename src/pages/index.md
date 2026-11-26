@@ -1,16 +1,11 @@
 ---
-layout: ../layouts/HomeLayout.astro
-title: "Georgia von Minden • ML Engineer & Systems Researcher"
-status: "Available for research & ML engineering"
-featuredProjects:
-  - "sf-flock-alpr-privacy"
-  - "aclu-legal-doc-pipeline"
-  - "lgbtqai-platform-rag"
-  - "discrete-diffusion-transformer"
-  - "umap-hull-exploration"
-  - "card-research"
+layout: ../layouts/PageLayout.astro
+title: "peach productions • spatial design studio"
+heading: "ethos"
 ---
 
-# Machine learning for privacy, accountability, and civil rights.
+founded and directed by georgia von minden, **peach productions** is a spatial design and installation studio exploring how light, suspended textiles, and optics shape physical gathering spaces.
 
-I’m **Georgia von Minden**, a machine learning engineer and data scientist in San Francisco. My work has directly influenced positive outcomes in civil rights cases here in California.
+we are motivated by the interaction between the soft organic needs of people to feel included in a space and the harsh unforgiving precision of the modern digital experience. we see light and transparency as a bridge between these two realms.
+
+working across outdoor landscapes and intimate venues, our studio pairs tactile fabric structures with custom projection systems. our intentionality and mindfulness towards execution is harnessed to creative emotive outcomes across all emotional ranges.

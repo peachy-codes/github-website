@@ -1,0 +1,55 @@
+---
+import ProjectLayout from "@layouts/ProjectLayout.astro";
+import { frontmatter as worksPage } from "../../works.md";
+
+export async function getStaticPaths() {
+  const works = Array.isArray(worksPage.works) ? worksPage.works : [];
+  return works.map((work) => ({
+    params: { slug: work.slug },
+    props: { work },
+  }));
+}
+
+const { work } = Astro.props;
+---
+
+<ProjectLayout frontmatter={work}>
+  {work.image && (
+    <img src={work.image} alt={work.title} />
+  )}
+
+  {work.quote && (
+    <blockquote>
+      <p>{work.quote}</p>
+    </blockquote>
+  )}
+
+  {work.secondaryImage && (
+    <img src={work.secondaryImage} alt={`${work.title} detail`} />
+  )}
+
+  {work.video && (
+    <div style="margin: 2.5rem 0; background: #000; overflow: hidden;">
+      <video 
+        src={work.video} 
+        controls 
+        muted 
+        playsinline 
+        loop 
+        style="width: 100%; max-height: 520px; display: block; margin: auto;"
+      ></video>
+    </div>
+  )}
+
+  {Array.isArray(work.sections) && work.sections.map((sec) => (
+    <section style="margin-top: 36px;">
+      {sec.heading && <h2>{sec.heading}</h2>}
+      {Array.isArray(sec.paragraphs) && sec.paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+      {Array.isArray(sec.bullets) && sec.bullets.map((b) => (
+        <p>{b}</p>
+      ))}
+    </section>
+  ))}
+</ProjectLayout>

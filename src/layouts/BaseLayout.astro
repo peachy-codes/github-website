@@ -1,98 +1,139 @@
 ---
+import { frontmatter as site } from "../pages/_site.md";
+import "../../public/assets/style.css";
+
+type NavItem = { label: string; href: string };
+
 type Props = {
   title?: string;
   description?: string;
+  brandTitle?: string;
+  brandSubtitle?: string;
+  footerText?: string;
   currentPath?: string;
 };
 
 const { 
-  title = "Georgia von Minden • ML Engineer & Systems Researcher", 
-  description = "Machine learning engineer and data scientist designing local-first, reliable AI systems for civil-rights investigations, privacy-critical contexts, and public interest technology.",
+  title = site.defaultTitle ?? "peach productions", 
+  description = site.defaultDescription ?? "",
+  brandTitle = site.brandTitle ?? "peach productions",
+  brandSubtitle = site.brandSubtitle ?? "a spatial design studio",
+  footerText = site.footerText ?? "intent motivates design",
   currentPath = Astro.url.pathname
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
+const navItems: NavItem[] = Array.isArray(site.nav) ? site.nav : [
+  { label: "studio", href: "/" },
+  { label: "works", href: "/works" },
+  { label: "contact", href: "/contact" },
+];
+
+const footerLinks: NavItem[] = Array.isArray(site.footerLinks) ? site.footerLinks : [];
+
+const resolveHref = (href: string) => {
+  if (href.startsWith("/")) {
+    return `${baseUrl}${href.slice(1)}`;
+  }
+  return href;
+};
+
+const isActive = (href: string) => {
+  if (href === "/") {
+    return currentPath === baseUrl || currentPath === "/";
+  }
+  return currentPath.includes(href);
+};
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     
-    <link rel="stylesheet" href={`${baseUrl}assets/style.css`} />
+    <!-- Theme Early Detection -->
+    <script is:inline>
+      try {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+          document.documentElement.setAttribute('data-theme', storedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    </script>
+
+    <!-- Single Typography System: Newsreader Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
-
-    <script is:inline>
-      // Theme initialization without flash of unstyled content
-      const storedTheme = typeof localStorage !== 'undefined' && localStorage.getItem('theme');
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
-    </script>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <div class="nav-wrapper">
-          <a href={baseUrl} class="brand-link" aria-label="Georgia von Minden Home">
-            <span class="brand-mark">GM</span>
-            <span>Georgia von Minden</span>
+    <div class="site-inner">
+      <header class="site-header">
+        <div class="brand-block">
+          <a href={baseUrl} class="brand-link" aria-label={brandTitle}>
+            <span class="brand-title">{brandTitle}</span>
+            {brandSubtitle && <span class="brand-subtitle">{brandSubtitle}</span>}
           </a>
+        </div>
 
+        <div class="header-right">
           <nav class="nav-links" aria-label="Primary Navigation">
-            <a href={`${baseUrl}work`} class={`nav-link ${currentPath.includes('/work') ? 'active' : ''}`}>Work</a>
-            <a href={`${baseUrl}photos`} class={`nav-link ${currentPath.includes('/photos') ? 'active' : ''}`}>Photos</a>
-            <a href={`${baseUrl}writing`} class={`nav-link ${currentPath.includes('/writing') ? 'active' : ''}`}>Writing</a>
-            <a href={`${baseUrl}about`} class={`nav-link ${currentPath.includes('/about') ? 'active' : ''}`}>About</a>
-            <a href={`${baseUrl}contact`} class={`nav-link ${currentPath.includes('/contact') ? 'active' : ''}`}>Contact</a>
+            {navItems.map((item) => (
+              <a 
+                href={resolveHref(item.href)} 
+                class={`nav-link ${isActive(item.href) ? 'active' : ''}`}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
-          <div class="nav-actions">
-            <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark/light theme" title="Toggle theme">
-              <span id="theme-icon">◐</span>
-            </button>
-          </div>
+          <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="toggle dark or light mode">toggle dark/light</button>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <main id="main-content">
-      <slot />
-    </main>
+      <main id="main-content">
+        <slot />
+      </main>
 
-    <footer class="site-footer">
-      <div class="container">
+      <footer class="site-footer">
         <div class="footer-content">
-          <div>
-            <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">Georgia von Minden</div>
-            <div>Local ML systems, civil rights investigations, & principled data science.</div>
-          </div>
-          <div class="footer-links">
-            <a href="https://github.com/peachy-codes" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/von-minden-ga/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="mailto:georgia.vonminden@gmail.com">Email</a>
-          </div>
+          <span>{footerText}</span>
+          {footerLinks.length > 0 && (
+            <div class="footer-links">
+              {footerLinks.map((link) => (
+                <a 
+                  href={resolveHref(link.href)}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
-        <div style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-tertiary);">
-          © {new Date().getFullYear()} Georgia von Minden. Built with Astro. Hosted on GitHub Pages.
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
+    <!-- Theme Toggle Handler -->
     <script is:inline>
-      const themeBtn = document.getElementById('theme-toggle');
-      if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-          const currentTheme = document.documentElement.getAttribute('data-theme');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') || 'dark';
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          try {
+            localStorage.setItem('theme', next);
+          } catch (e) {}
         });
       }
     </script>
