@@ -413,7 +413,7 @@ img, video {
 }
 
 .footer-content {
-  padding-top: 24px;
+  padding-top: 0px;
   font-family: var(--font-head);
   font-size: 14px;
   font-style: italic;
