@@ -23,7 +23,7 @@ works:
       - heading: "materials & fabrication"
         paragraphs:
           - "multi-layered translucent tulle was draped over tensioned paracord fastened to redwood trunks through non-destructive rigging, allowing wind and physical depth to diffuse the projected light across multiple planes."
-          - "wave effects were created via multiple sinusoidal functions, custom shaders were coded to provided god rays, lens flare, and other diffuse lighting effects. as the suns position changes the refraction and reflection properties also change in order to maintain realism. perlin noise was used to create a sea foam effect."
+          - "wave effects are created via multiple sinusoidal functions, while custom shaders were coded to provided god rays, lens flare, and other diffuse lighting effects. as the sun's position changes the refraction and reflection properties also change in order to maintain realism. perlin noise was used to create a sea foam effect."
 
   - slug: "macro-micro-art"
     title: "MACRO/micro"
@@ -42,8 +42,8 @@ works:
           - "MACRO/micro is a visual work investigating the exchange between humanity and ai. as the composition unfolds over its run, various features begin to immerge. centered is a human face, with various gaps and holes in its visage. encircling the face are over 300 faces, gradually evolving in position, shape, and decay. the smaller, supporting faces are randomly selected to donate pieces of their own, which are then applied to the center face. the main face is composed of hundreds of smaller pieces from these faces."
       - heading: "materials & fabrication"
         paragraphs:
-          - "the faces are real human faces available in the public domain obtain from a public research dataset. the faces themselves are from inmates who volunteered their likeness as part of research grants in an unrelated project."
-          - "four layers of black scrim and a short throw projector are used to display the piece. custom code in java processing with supporting shaders are used for the rendering. short-throw projection on multi-layered scrim creates a multiplying effect designed to obfuscate the visual, inviting attendees to sit with the piece and observe its evolution over time."
+          - "the faces are real human faces available in the public domain obtain from a public research dataset. the faces themselves are from participants who volunteered their likeness as part of research projects."
+          - "four layers of black scrim and a short throw projector are used to display the piece. custom code in java processing with supporting shaders was used for the rendering. short-throw projection on multi-layered scrim creates a multiplying effect designed to obfuscate the visual, inviting attendees to sit with the piece and observe its evolution over time."
           
 ---
 
