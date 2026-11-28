@@ -22,8 +22,8 @@ works:
           - "midnight sunset is a bespoke concept piece. set across the main stage of the cosmo luxury resort renegade, the installation delivers an immersive and inviting representation of the passage of time to the rave attendees. the sunset is triggered after golden hour, and runs until sunrise. the sun gradually sets over the course of seven hours, providing guests the ability to perceive the passing of time without needing to break immersion by engaging with other electronic or mechanical devices. parameters allow for alternative otherworldly aesthetics during special timeframes."
       - heading: "materials & fabrication"
         paragraphs:
-          - "multi-layered translucent tulle was draped over tensioned paracord fastened to redwood trunks through non-destructive rigging, allowing wind and physical depth to diffuse the projected light across multiple planes."
-          - "wave effects are created via multiple sinusoidal functions, while custom shaders were coded to provided god rays, lens flare, and other diffuse lighting effects. as the sun's position changes the refraction and reflection properties also change in order to maintain realism. perlin noise was used to create a sea foam effect."
+          - "multi-layered translucent tulle is draped over tensioned paracord fastened to redwood trunks through non-destructive rigging, allowing wind and physical depth to diffuse the projected light across multiple planes."
+          - "wave effects are created via multiple sinusoidal functions, while custom shaders are coded to provided god rays, lens flare, and other diffuse lighting effects. as the sun's position changes the refraction and reflection properties also change in order to maintain realism. perlin noise is used to create a sea foam effect."
 
   - slug: "macro-micro-art"
     title: "MACRO/micro"
