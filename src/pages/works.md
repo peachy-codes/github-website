@@ -42,7 +42,7 @@ works:
           - "MACRO/micro is a visual work investigating the exchange between humanity and ai. as the composition unfolds over its run, various features begin to immerge. centered is a human face, with various gaps and holes in its visage. encircling the face are over 300 faces, gradually evolving in position, shape, and decay. the smaller, supporting faces are randomly selected to donate pieces of their own, which are then applied to the center face. the main face is composed of hundreds of smaller pieces from these faces."
       - heading: "materials & fabrication"
         paragraphs:
-          - "the faces are real human faces available in the public domain obtain from a public research dataset. the faces themselves are from participants who volunteered their likeness as part of research projects."
+          - "the faces are from participants who volunteered their likeness as part of research projects."
           - "four layers of black scrim and a short throw projector are used to display the piece. custom code in java processing with supporting shaders was used for the rendering. short-throw projection on multi-layered scrim creates a multiplying effect designed to obfuscate the visual, inviting attendees to sit with the piece and observe its evolution over time."
           
 ---
